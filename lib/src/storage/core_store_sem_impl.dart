@@ -12,12 +12,12 @@ class CoreStoreSembastImp implements CoreStore {
       factory ??= databaseFactoryIo;
       final SembastCodec codec = getXXTeaSembastCodec(password: password);
       String dbDirectory = '';
-      if (Platform.isIOS || Platform.isAndroid)
-        dbDirectory = (await getApplicationDocumentsDirectory()).path;
-      final String dbPath = path.join('$dbDirectory/parse', 'parse.db');
-      final Database db = await factory.openDatabase(dbPath, codec: codec);
-      _instance =
-          CoreStoreSembastImp._internal(db, StoreRef<String, String>.main());
+      // if (Platform.isIOS || Platform.isAndroid)
+      // dbDirectory = (await getApplicationDocumentsDirectory()).path;
+      // final String dbPath = path.join('$dbDirectory/parse', 'parse.db');
+      // final Database db = await factory.openDatabase(dbPath, codec: codec);
+      // _instance =
+      //     CoreStoreSembastImp._internal(db, StoreRef<String, String>.main());
     }
 
     return _instance;

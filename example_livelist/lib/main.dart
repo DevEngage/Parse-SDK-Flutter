@@ -76,45 +76,45 @@ class _MyAppState extends State<MyApp> {
         GlobalKey<_ObjectFormState>();
     return Column(
       children: <Widget>[
-        Expanded(
-          child: ParseLiveListWidget<ParseObject>(
-              query: _queryBuilder,
-              duration: const Duration(seconds: 1),
-              childBuilder: (BuildContext context,
-                  ParseLiveListElementSnapshot<ParseObject> snapshot) {
-                if (snapshot.failed) {
-                  return const Text('something went wrong!');
-                } else if (snapshot.hasData) {
-                  return ListTile(
-                    title: Row(
-                      children: <Widget>[
-                        Flexible(
-                          child: Text(
-                              snapshot.loadedData.get<int>('order').toString()),
-                          flex: 1,
-                        ),
-                        Flexible(
-                          child: Container(
-                            alignment: Alignment.center,
-                            child: Text(
-                              snapshot.loadedData.get<String>('text'),
-                            ),
-                          ),
-                          flex: 10,
-                        ),
-                      ],
-                    ),
-                    onLongPress: () {
-                      objectFormKey.currentState.setObject(snapshot.loadedData);
-                    },
-                  );
-                } else {
-                  return const ListTile(
-                    leading: CircularProgressIndicator(),
-                  );
-                }
-              }),
-        ),
+        // Expanded(
+        //   child: ParseLiveListWidget<ParseObject>(
+        //       query: _queryBuilder,
+        //       duration: const Duration(seconds: 1),
+        //       childBuilder: (BuildContext context,
+        //           ParseLiveListElementSnapshot<ParseObject> snapshot) {
+        //         if (snapshot.failed) {
+        //           return const Text('something went wrong!');
+        //         } else if (snapshot.hasData) {
+        //           return ListTile(
+        //             title: Row(
+        //               children: <Widget>[
+        //                 Flexible(
+        //                   child: Text(
+        //                       snapshot.loadedData.get<int>('order').toString()),
+        //                   flex: 1,
+        //                 ),
+        //                 Flexible(
+        //                   child: Container(
+        //                     alignment: Alignment.center,
+        //                     child: Text(
+        //                       snapshot.loadedData.get<String>('text'),
+        //                     ),
+        //                   ),
+        //                   flex: 10,
+        //                 ),
+        //               ],
+        //             ),
+        //             onLongPress: () {
+        //               objectFormKey.currentState.setObject(snapshot.loadedData);
+        //             },
+        //           );
+        //         } else {
+        //           return const ListTile(
+        //             leading: CircularProgressIndicator(),
+        //           );
+        //         }
+        //       }),
+        // ),
         Container(
           color: Colors.black12,
           child: ObjectForm(

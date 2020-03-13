@@ -35,7 +35,7 @@ part 'package:parse_server_sdk/src/objects/response/parse_success_no_results.dar
 
 part 'package:parse_server_sdk/src/data/core_store.dart';
 
-part 'package:parse_server_sdk/src/storage/core_store_sem_impl.dart';
+// part 'package:parse_server_sdk/src/storage/core_store_sem_impl.dart';
 
 part 'package:parse_server_sdk/src/storage/core_store_sp_impl.dart';
 

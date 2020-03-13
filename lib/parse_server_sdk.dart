@@ -10,9 +10,9 @@ import 'package:devicelocale/devicelocale.dart';
 import 'package:http/http.dart';
 import 'package:http/io_client.dart';
 import 'package:meta/meta.dart';
-import 'package:package_info/package_info.dart';
+// import 'package:package_info/package_info.dart';
 import 'package:path/path.dart' as path;
-import 'package:path_provider/path_provider.dart';
+// import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,7 +20,7 @@ import 'package:uuid/uuid.dart';
 import 'package:xxtea/xxtea.dart';
 
 export 'src/network/parse_live_query.dart'
-if (dart.library.js) 'src/network/parse_live_query_web.dart';
+    if (dart.library.js) 'src/network/parse_live_query_web.dart';
 export 'src/utils/parse_live_list.dart';
 
 part 'package:parse_server_sdk/src/objects/response/parse_error_response.dart';
@@ -119,8 +119,8 @@ class Parse {
       String masterKey,
       String sessionId,
       bool autoSendSessionId,
-        SecurityContext securityContext,
-        CoreStore coreStore}) async {
+      SecurityContext securityContext,
+      CoreStore coreStore}) async {
     final String url = removeTrailingSlash(serverUrl);
 
     await ParseCoreData.init(appId, url,
@@ -150,7 +150,7 @@ class Parse {
     final ParseHTTPClient _client = client ??
         ParseHTTPClient(
             sendSessionId:
-            sendSessionIdByDefault ?? ParseCoreData().autoSendSessionId,
+                sendSessionIdByDefault ?? ParseCoreData().autoSendSessionId,
             securityContext: ParseCoreData().securityContext);
 
     const String className = 'parseBase';

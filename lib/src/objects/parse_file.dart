@@ -9,7 +9,7 @@ class ParseFile extends ParseObject {
       String url,
       bool debug,
       ParseHTTPClient client,
-        bool autoSendSessionId})
+      bool autoSendSessionId})
       : super('ParseFile', debug: debug, autoSendSessionId: autoSendSessionId) {
     _debug = isDebugEnabled(objectLevelDebug: debug);
     _client = client ??
@@ -44,39 +44,43 @@ class ParseFile extends ParseObject {
   @override
   String toString() => json.encode(toJson(full: true));
 
+  // TODO: fix for web
   Future<ParseFile> loadStorage() async {
-    final Directory tempPath = await getTemporaryDirectory();
+    // final Directory tempPath = await getTemporaryDirectory();
 
-    if (name == null) {
-      file = null;
-      return this;
-    }
+    // if (name == null) {
+    //   file = null;
+    //   return this;
+    // }
 
-    final File possibleFile = File('${tempPath.path}/$name');
-    // ignore: avoid_slow_async_io
-    final bool exists = await possibleFile.exists();
+    // final File possibleFile = File('${tempPath.path}/$name');
+    // // ignore: avoid_slow_async_io
+    // final bool exists = await possibleFile.exists();
 
-    if (exists) {
-      file = possibleFile;
-    } else {
-      file = null;
-    }
+    // if (exists) {
+    //   file = possibleFile;
+    // } else {
+    //   file = null;
+    // }
 
-    return this;
+    // return this;
+    throw 'coming soon!';
   }
 
+  // TODO: fix for web
   Future<ParseFile> download() async {
     if (url == null) {
       return this;
     }
 
-    final Directory tempPath = await getTemporaryDirectory();
-    file = File('${tempPath.path}/$name');
-    await file.create();
-    final Response response = await _client.get(url);
-    await file.writeAsBytes(response.bodyBytes);
+    // final Directory tempPath = await getTemporaryDirectory();
+    // file = File('${tempPath.path}/$name');
+    // await file.create();
+    // final Response response = await _client.get(url);
+    // await file.writeAsBytes(response.bodyBytes);
 
-    return this;
+    // return this;
+    throw 'coming soon!';
   }
 
   /// Uploads a file to Parse Server

@@ -88,12 +88,13 @@ class ParseInstallation extends ParseObject {
 
     //Timezone
 
+    // TODO: fix for web
     //App info
-    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    set<String>(keyAppName, packageInfo.appName);
-    set<String>(keyAppVersion, packageInfo.version);
-    set<String>(keyAppIdentifier, packageInfo.packageName);
-    set<String>(keyParseVersion, keySdkVersion);
+    // final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    // set<String>(keyAppName, packageInfo.appName);
+    // set<String>(keyAppVersion, packageInfo.version);
+    // set<String>(keyAppIdentifier, packageInfo.packageName);
+    // set<String>(keyParseVersion, keySdkVersion);
   }
 
   @override

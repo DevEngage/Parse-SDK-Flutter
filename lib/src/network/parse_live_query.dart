@@ -2,7 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:connectivity/connectivity.dart';
+// TODO: fix for web
+// import 'package:connectivity/connectivity.dart';
 import 'package:flutter/widgets.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -51,7 +52,7 @@ class LiveQueryReconnectingController with WidgetsBindingObserver {
   final bool debug;
 
   int _retryState = 0;
-  bool _isOnline = false;
+  bool _isOnline = true;
   bool _isConnected = false;
   bool _userDisconnected = false;
 
@@ -59,8 +60,9 @@ class LiveQueryReconnectingController with WidgetsBindingObserver {
 
   LiveQueryReconnectingController(
       this._reconnect, this._eventStream, this.debug) {
-    Connectivity().checkConnectivity().then(_connectivityChanged);
-    Connectivity().onConnectivityChanged.listen(_connectivityChanged);
+    // TODO: fix for web
+    // Connectivity().checkConnectivity().then(_connectivityChanged);
+    // Connectivity().onConnectivityChanged.listen(_connectivityChanged);
 
     _eventStream.listen((LiveQueryClientEvent event) {
       switch (event) {
@@ -71,6 +73,7 @@ class LiveQueryReconnectingController with WidgetsBindingObserver {
           break;
         case LiveQueryClientEvent.DISCONNECTED:
           _isConnected = false;
+          _isOnline = false;
           _setReconnect();
           break;
         case LiveQueryClientEvent.USER_DISCONNECTED:
@@ -86,13 +89,13 @@ class LiveQueryReconnectingController with WidgetsBindingObserver {
     });
     WidgetsBinding.instance.addObserver(this);
   }
-
-  void _connectivityChanged(ConnectivityResult state) {
-    if (!_isOnline && state != ConnectivityResult.none) _retryState = 0;
-    _isOnline = state != ConnectivityResult.none;
-    if (debug) print('$DEBUG_TAG: $state');
-    _setReconnect();
-  }
+  // TODO: fix for web
+  // void _connectivityChanged(ConnectivityResult state) {
+  //   if (!_isOnline && state != ConnectivityResult.none) _retryState = 0;
+  //   _isOnline = state != ConnectivityResult.none;
+  //   if (debug) print('$DEBUG_TAG: $state');
+  //   _setReconnect();
+  // }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
